@@ -1,0 +1,36 @@
+{
+  "name": "cryptchat",
+  "version": "1.0.0",
+  "description": "A completely peer-to-peer and offline messaging and discussion system using WebRTC for true peer-to-peer file transfers/broadcasts and messaging.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alastairparagas/CryptChat.git"
+  },
+  "keywords": [
+    "Encryption",
+    "P2P",
+    "Peer-to-peer",
+    "chat"
+  ],
+  "author": "Alastair Paragas <alastairparagas@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alastairparagas/CryptChat/issues"
+  },
+  "homepage": "https://github.com/alastairparagas/CryptChat#readme",
+  "devDependencies": {
+    "chalk": "^1.1.1",
+    "gulp-sass": "^2.1.1",
+    "gulp-watch": "^4.3.5"
+  },
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "gulp": "^3.9.0",
+    "jquery": "^2.2.0",
+    "webtorrent": "^0.72.2"
+  }
+}

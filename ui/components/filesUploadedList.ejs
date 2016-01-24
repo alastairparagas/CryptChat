@@ -1,0 +1,12 @@
+<li class="list-group-header">
+    <input class="form-control" type="text" placeholder="Search for a file you shared" id="filesUploadedSearch">
+</li>
+<% for (var i=0; i<filesUploadedList.length; i++) { %>
+<li class="list-group-item">
+    <span class="icon icon-attach media-object pull-left"></span>
+    <div class="media-body">
+        <strong><%= filesUploadedList[i].name %></strong>
+        <p><%= filesUploadedList[i].type %></p>
+    </div>
+</li>
+<% } %>

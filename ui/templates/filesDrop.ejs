@@ -1,0 +1,71 @@
+<div id="alertArea"></div>
+<div style="border-radius: 10px; 
+            background: #f1f1f1; 
+            color: #444;
+            padding: 20px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            margin: 10px;
+            text-align: center;"
+     id="uploadFile">
+    <span class="icon icon-upload" style="margin-right: 20px; 
+                                          font-size: 200%;
+                                          font-weight: bold;"></span> 
+    Drag a file you want to upload here
+</div>
+
+
+<script type="text/javascript">
+    var $ = require('jquery'),
+        clipboard = require('electron').clipboard,
+        
+        torrent = require('./torrent'), 
+        ajaxLoad = require('./ajaxLoad');
+    
+    (function () {
+        // Prevent the drop event from triggering document's drop behavior
+        $(document).on('drop', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }).on('dragover', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+        
+        // Detect a drop to the div#uploadFile and process the file
+        $('#pageCanvas #uploadFile').on('drop', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            e = e.originalEvent;
+
+            var files = (e.target && e.target.files) || 
+                (e.dataTransfer && e.dataTransfer.files);
+            
+            // Torrent seed file, load alert and bind click handler to alert 
+            // box's click events
+            torrent.seed(files).then(function (torrent) {
+                return ajaxLoad.loadComponent('#alertArea', 
+                                              'filesDropSuccess', 
+                                              {link: torrent.magnetURI})
+                    .then(function () {
+                        return torrent;
+                    });
+            }).then(function (torrent) {
+                $('#filesDropSuccess #copyLink').on('click', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    
+                    clipboard.writeText(torrent.magnetURI);
+                });
+                $('#filesDropSuccess #close').on('click', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    
+                    $('#alertArea').html('');
+                });
+            });
+        });
+        
+    }());
+</script>
