@@ -1,3 +1,8 @@
+/**
+* A module that abstracts the torrent and broadcasting capabilities
+*   of the app. Uses WebRTC over Bittorent communication for real-time 
+*   server-less file sharing.
+*/
 var webtorrent = require('webtorrent'),
     
     torrentClient = new webtorrent(), 
@@ -11,6 +16,9 @@ function _listSharedFiles() {
     return sharedFiles;
 }
 function _saveSharedFiles() {
+    if (sharedFiles.length > 20) {
+        sharedFiles = sharedFiles.slice(0, 29);
+    }
     storage.set('sharedFiles', sharedFiles);
 }
 function setSharedFilesObserver(observerFunc) {

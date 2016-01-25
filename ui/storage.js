@@ -1,6 +1,6 @@
 /**
 * A module that exposes a bunch of methods to set, get and remove 
-*   persistent data to the application
+*   data to the application that should be made persistent
 */
 var appData = localStorage.getItem('appData') || {}, 
     appDataMeta = localStorage.getItem('appDataMeta') || {};
