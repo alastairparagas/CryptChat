@@ -17,6 +17,10 @@ Only those who have access to this magnet link have access to the actual file be
 ## What I plan to accomplish/add after
 I plan to actually implement an encryption method to the files and messages transferred using some encryption algorithm, but the problem is always with the safe distribution of a key to prevent malicious and unauthorized users from accessing the file/communication stream.
 
-I was thinking of using Keyring.io, which uses social media activity, as a way to ensure a person's validity. Approved keys from the service between 2 parties would then be used to actually encrypt files and messages sent from peer to peer.
+* I was thinking of using [Keybase.io](https://keybase.io), which uses social media activity, as a way to ensure a person's validity. Approved keys from the service between 2 parties would then be used to actually encrypt files and messages sent from peer to peer.
 
-I was also thinking of implementing a more robust user interface, probably using a stricter MVC or Flux framework/library.
+* If using Keybase.io seems to not be appropriate, I was planning to use [KbPGP](https://keybase.io/kbpgp), which is Keybase's Javascript implementation for PGP (Pretty Good Privacy). I have yet to study how PGP really works, but I know that it combines the benefits of asymmetric key encryption and public-key encryption. The [Wikipedia article](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) has some good notes.
+
+* I was also thinking of implementing a more robust user interface, probably using a stricter MVC or Flux framework/library.
+
+* In terms of user's data and communication logs, because of the lack of a central server, I was imagining of having to use some journaling system similar to a decentralized database system where if one of the client is out of sync, an "out of sync" state is first determined by checking the timestamps on each client in the peer-to-peer network. Then, upon resolving that one of the clients are "out of sync", a resolution state where a pull of the unsynchronized data is then made to the device that was determined to be "out of sync".
